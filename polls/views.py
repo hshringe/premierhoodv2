@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import generic
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    players = listOfplayer()
+    return HttpResponse(players)
 
 # Create your views here.
+
+def listOfplayer():
+    players = ['ronaldo ','ajay ','messi ','kante']
+    return players
