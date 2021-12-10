@@ -11,7 +11,7 @@ class Player(models.Model):
 
 class Stock_Rating(models.Model):
 
-    
+
 class Stock_Creativity(models.Model):
 
 class Stock_Impact(models.Model):
