@@ -19,7 +19,7 @@ def register_request(request):
 		form = NewUserForm(request.POST)
 		if form.is_valid():
 			user = form.save()
-			login(request, user)
+			login(request,user)
 			messages.success(request, "Registration successful." )
 			return redirect("main:homepage")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
@@ -38,6 +38,7 @@ def login_request(request):
 				messages.info(request, f"You are now logged in as {username}.")
 				return redirect("main:homepage")
 			else:
+
 				messages.error(request,"Invalid username or password.")
 		else:
 			messages.error(request,"Invalid username or password.")
@@ -57,15 +58,15 @@ def listOfplayer():
 
 
 
-def login(request):
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
-    user = AUTH_PASSWORD_VALIDATORS.authenticate(username=username, password=password)
-    if user is not None and user.is_active:
-        # Correct password, and the user is marked "active"
-        AUTH_PASSWORD_VALIDATORS.login(request, user)
-        # Redirect to a success page.
-    return render(request, 'admin/dashboard.html')  
+# def login(request):
+#     username = request.POST.get('username', '')
+#     password = request.POST.get('password', '')
+#     user = AUTH_PASSWORD_VALIDATORS.authenticate(username=username, password=password)
+#     if user is not None and user.is_active:
+#         # Correct password, and the user is marked "active"
+#         AUTH_PASSWORD_VALIDATORS.login(request, user)
+#         # Redirect to a success page.
+#     return render(request, 'admin/dashboard.html')  
 
 def dashboard(request):
     return render(request, 'admin/dashboard.html') 
