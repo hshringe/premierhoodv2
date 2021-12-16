@@ -15,7 +15,7 @@ class Player(models.Model):
     last_name = models.CharField(max_length=256)
 
 
-class Stock_Rating(models.Model):
+class Stock_Influence(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     current_price = models.IntegerField()
