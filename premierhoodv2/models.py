@@ -10,7 +10,7 @@ class User(models.Model):
 
 
 class Player(models.Model):
-    id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
 
