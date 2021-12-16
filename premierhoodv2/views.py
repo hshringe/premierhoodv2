@@ -26,6 +26,7 @@ def register_request(request):
             print(username)
             print(password)
             print(email)
+            #THIS IS WHERE IT SHOULD PUSH TO A DATABASE
             login(request, user)
             messages.success(request, "Registration successful.")
             return redirect("/players")
@@ -45,6 +46,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
+                #GET THE USER FROM OUR OWN DATABASE
                 return redirect("/players")
             else:
 
