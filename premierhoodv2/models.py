@@ -4,30 +4,29 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-    username = models.CharField(max_length=256)
+    username = models.CharField(max_length=256,  primary_key=True)
     password = models.CharField(max_length=256)
     email = models.CharField(max_length=512)
-
 
 class Player(models.Model):
     id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
 
+class UserStocks(models.Model):
+    username = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    stocks = models.ManyToManyField(Player)
 
 class Stock_Influence(models.Model):
-    player = models.OneToOneField(Player, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    current_price = models.IntegerField()
+    player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
+    current_price = models.DecimalField(max_digits=30, decimal_places=15)
 
 
 class Stock_Creativity(models.Model):
-    player = models.OneToOneField(Player, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
     current_price = models.IntegerField()
 
 
 class Stock_Impact(models.Model):
-    player = models.OneToOneField(Player, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    current_price = models.IntegerField()
+    player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
+    current_price = models.DecimalField(max_digits=30, decimal_places=15)
