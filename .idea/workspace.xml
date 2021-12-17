@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18b9d25e-967a-4610-a980-c255d22f30ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/premierhoodv2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/premierhoodv2/templates/premierhoodv2/player_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premierhoodv2/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/premierhoodv2/templates/playerView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/premierhoodv2/templates/players.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/premierhoodv2/templates/stockView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premierhoodv2/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premierhoodv2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premierhoodv2/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

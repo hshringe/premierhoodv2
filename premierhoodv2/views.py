@@ -12,6 +12,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate  # add this
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm  # add this
+from django.db import connection
+from .models import *
 
 
 def register_request(request):
@@ -25,7 +27,7 @@ def register_request(request):
             print(username)
             print(password)
             print(email)
-            #THIS IS WHERE IT SHOULD PUSH TO A DATABASE
+            # THIS IS WHERE IT SHOULD PUSH TO A DATABASE
             login(request, user)
             messages.success(request, "Registration successful.")
             return redirect("/players")
@@ -45,7 +47,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                #GET THE USER FROM OUR OWN DATABASE
+                # GET THE USER FROM OUR OWN DATABASE
                 return redirect("/players")
             else:
 
@@ -60,23 +62,49 @@ def index(request):
     return render(request=request, template_name="templates/home.html")
 
 
-# Create your views here.
-
-
 def listOfplayer(request):
-    players = ['ronaldo ', 'ajay ', 'messi ', 'kante']
-    return HttpResponse(players)
+    players = Player.objects.all()
+    context = {'players': players}
+
+    return render(request, 'templates/players.html', context)
 
 
-# def login(request):
-#     username = request.POST.get('username', '')
-#     password = request.POST.get('password', '')
-#     user = AUTH_PASSWORD_VALIDATORS.authenticate(username=username, password=password)
-#     if user is not None and user.is_active:
-#         # Correct password, and the user is marked "active"
-#         AUTH_PASSWORD_VALIDATORS.login(request, user)
-#         # Redirect to a success page.
-#     return render(request, 'admin/dashboard.html')  
+def playerView(request, id):
+    player = Player.objects.get(id=id)
+    context = {"player": player}
+    currentPrice = Stock_Creativity.objects.raw('''SELECT current_price FROM premierhoodv2_stock_creativity WHERE id = ''');
+    name_map = {'current_price': currentPrice, 'id': id}
+    Stock_Creativity.objects.raw('''SELECT * FROM premierhoodv2_stock_creativity''', translations=name_map)
+    print(name_map)
+    return render(request, 'templates/playerView.html', context)
+
+
+def playerCreativity(request, id):
+    stockCreativity = Stock_Creativity.objects.get(id=id)
+    context = {
+        "stock": stockCreativity,
+        "type": "Creativity"
+    }
+    return render(request, 'templates/stockView.html', context)
+
+
+def playerInfluence(request, player_id):
+    stockInfluence = Stock_Creativity.objects.get(player_id=1)
+    context = {
+        "stock": stockInfluence,
+        "type": "Influence"
+    }
+    return render(request, 'templates/stockView.html', context)
+
+
+def playerImpact(request, player_id):
+    stockImpact = Stock_Creativity.objects.get(player_id=1)
+    context = {
+        "stock": stockImpact,
+        "type": "Impact"
+    }
+    return render(request, 'templates/stockView.html', context)
+
 
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
