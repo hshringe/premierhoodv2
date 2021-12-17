@@ -79,8 +79,8 @@ def playerView(request, id):
     return render(request, 'templates/playerView.html', context)
 
 
-def playerCreativity(request, id):
-    stockCreativity = Stock_Creativity.objects.get(id=id)
+def playerCreativity(request, player_id):
+    stockCreativity = Stock_Creativity.objects.get(player_id=player_id)
     context = {
         "stock": stockCreativity,
         "type": "Creativity"
@@ -89,7 +89,7 @@ def playerCreativity(request, id):
 
 
 def playerInfluence(request, player_id):
-    stockInfluence = Stock_Creativity.objects.get(player_id=1)
+    stockInfluence = Stock_Creativity.objects.get(player_id=player_id)
     context = {
         "stock": stockInfluence,
         "type": "Influence"
@@ -98,7 +98,7 @@ def playerInfluence(request, player_id):
 
 
 def playerImpact(request, player_id):
-    stockImpact = Stock_Creativity.objects.get(player_id=1)
+    stockImpact = Stock_Creativity.objects.get(player_id=player_id)
     context = {
         "stock": stockImpact,
         "type": "Impact"
