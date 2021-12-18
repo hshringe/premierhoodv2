@@ -36,4 +36,5 @@ urlpatterns = [
     path('players/<player_id>/impact/sell', views.sellImpact, name='PlayerSellImpact'),
     path('players/<player_id>/creativity/sell', views.sellCreativity, name='PlayerSellCreativity'),
     path('players/<player_id>/influence/sell', views.sellInfluence, name='PlayerSellInfluence'),
+
 ]

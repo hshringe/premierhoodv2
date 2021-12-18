@@ -1,23 +1,47 @@
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Players</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Players</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 </head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Premierhood</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/players">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='/user/stocks'>User Stocks</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 <body>
 
-<a href='/user/stocks' /> View Users Stocks</a>
-<h1>List of Players  </h1>
 
-{% for player in players %}
-    <lis>
-    {{ player.first_name }} {{ player.last_name }}
-        <a href= "/players/{{ player.id }}">
-        Buy/Sell
-        </a>
-    </lis>
-
-<br><br>
-{% endfor %}
+<h1>List of Players </h1>
+<div class="container">
+    {% for player in players %}
+        <lis>
+        {{ player.first_name }} {{ player.last_name }}
+            <a class="btn btn-primary" href= "/players/{{ player.id }}">
+            Buy/Sell
+            </a>
+        </lis>
+    <br><br>
+    {% endfor %}
+</div>
 </table>
 
 
