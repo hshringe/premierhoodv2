@@ -13,19 +13,17 @@ class Player(models.Model):
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
 
-class UserStocks(models.Model):
-    username = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    stocks = models.ManyToManyField(Player)
+class UserStocksOwned(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    stock = models.ForeignKey(Player, on_delete=models.CASCADE)
 
 class Stock_Influence(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
     current_price = models.DecimalField(max_digits=30, decimal_places=15)
 
-
 class Stock_Creativity(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
     current_price = models.IntegerField()
-
 
 class Stock_Impact(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)

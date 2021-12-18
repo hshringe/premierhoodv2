@@ -1,0 +1,18 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Players Owned by {{ username }} </title>
+</head>
+<body>
+
+<h1>List of Players  </h1>
+
+{% for player in players %}
+    <lis>
+    {{ player.first_name }} {{ player.last_name }}
+
+    </lis>
+
+<br><br>
+{% endfor %}
+</body>

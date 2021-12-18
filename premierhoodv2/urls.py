@@ -27,7 +27,7 @@ urlpatterns = [
     path('players/<player_id>/impact', views.playerImpact, name='PlayerViewImpact'),
     path('players/<id>/creativity', views.playerCreativity, name='PlayerViewCreativity'),
     path('players/<player_id>/influence', views.playerInfluence, name='PlayerViewInfluence'),
-    path('user/<id>/stocks', views.UserStockView, name='StockView'),
+    path('user/stocks', views.userStockView, name='UserStockView'),
     path("register", views.register_request, name="register"),
     path("login/", views.login_request, name="login")
 

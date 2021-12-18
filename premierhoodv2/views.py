@@ -72,10 +72,6 @@ def listOfplayer(request):
 def playerView(request, id):
     player = Player.objects.get(id=id)
     context = {"player": player}
-    currentPrice = Stock_Creativity.objects.raw('''SELECT current_price FROM premierhoodv2_stock_creativity WHERE id = ''');
-    name_map = {'current_price': currentPrice, 'id': id}
-    Stock_Creativity.objects.raw('''SELECT * FROM premierhoodv2_stock_creativity''', translations=name_map)
-    print(name_map)
     return render(request, 'templates/playerView.html', context)
 
 
@@ -104,6 +100,23 @@ def playerImpact(request, player_id):
         "type": "Impact"
     }
     return render(request, 'templates/stockView.html', context)
+
+
+def userStockView(request):
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+    print(username)
+    players = Player.objects.raw('''SELECT *
+                                FROM premierhoodv2_player tbl1 
+                                NATURAL JOIN 
+                                (SELECT stock_id 
+                                FROM premierhoodv2_userstocksowned 
+                                WHERE username_id = %s) tbl2''', [username])
+    context = {'players': players,
+               'username': username}
+
+    return render(request, 'templates/userPlayers.html', context)
 
 
 def dashboard(request):
