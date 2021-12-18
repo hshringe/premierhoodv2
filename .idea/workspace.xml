@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18b9d25e-967a-4610-a980-c255d22f30ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boot/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    <list default="true" id="18b9d25e-967a-4610-a980-c255d22f30ce" name="Changes" comment="stuff">
+      <change afterPath="$PROJECT_DIR$/ProcFile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/premierhoodv2/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premierhoodv2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/premierhoodv2/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +45,14 @@
       <option name="presentableId" value="Default" />
       <updated>1639610704122</updated>
     </task>
+    <task id="LOCAL-00001" summary="stuff">
+      <created>1639789100096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639789100096</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,5 +65,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
   </component>
 </project>
