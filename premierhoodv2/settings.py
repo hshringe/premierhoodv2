@@ -14,6 +14,10 @@ import os
 from pathlib import Path
 # Configure Django App for Heroku.
 
+import django_heroku
+
+django_heroku.settings(local())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +138,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+os.path.join(BASE_DIR, 'boot')
+]
