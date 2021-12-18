@@ -25,10 +25,15 @@ urlpatterns = [
     path("players/", views.listOfplayer, name="players"),
     path('players/<id>/', views.playerView, name='PlayerView'),
     path('players/<player_id>/impact', views.playerImpact, name='PlayerViewImpact'),
-    path('players/<id>/creativity', views.playerCreativity, name='PlayerViewCreativity'),
+    path('players/<player_id>/creativity', views.playerCreativity, name='PlayerViewCreativity'),
     path('players/<player_id>/influence', views.playerInfluence, name='PlayerViewInfluence'),
     path('user/stocks', views.userStockView, name='UserStockView'),
     path("register", views.register_request, name="register"),
-    path("login/", views.login_request, name="login")
-
+    path("login/", views.login_request, name="login"),
+    path('players/<player_id>/impact/buy', views.buyImpact, name='PlayerBuyImpact'),
+    path('players/<player_id>/creativity/buy', views.buyCreativity, name='PlayerBuyCreativity'),
+    path('players/<player_id>/influence/buy', views.buyInfluence, name='PlayerBuyInfluence'),
+    path('players/<player_id>/impact/sell', views.sellImpact, name='PlayerSellImpact'),
+    path('players/<player_id>/creativity/sell', views.sellCreativity, name='PlayerSellCreativity'),
+    path('players/<player_id>/influence/sell', views.sellInfluence, name='PlayerSellInfluence'),
 ]

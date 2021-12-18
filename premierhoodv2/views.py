@@ -72,34 +72,42 @@ def listOfplayer(request):
 def playerView(request, id):
     player = Player.objects.get(id=id)
     context = {"player": player}
+    print(request.user)
     return render(request, 'templates/playerView.html', context)
 
 
 def playerCreativity(request, player_id):
+    player = Player.objects.get(id=player_id)
     stockCreativity = Stock_Creativity.objects.get(player_id=player_id)
     context = {
         "stock": stockCreativity,
-        "type": "Creativity"
+        "type": "creativity",
+        "player": player,
     }
     return render(request, 'templates/stockView.html', context)
 
 
 def playerInfluence(request, player_id):
-    stockInfluence = Stock_Creativity.objects.get(player_id=player_id)
+    player = Player.objects.get(id=player_id)
+    stockInfluence = Stock_Influence.objects.get(player_id=player_id)
     context = {
         "stock": stockInfluence,
-        "type": "Influence"
+        "player": player,
+        "type": "influence"
     }
     return render(request, 'templates/stockView.html', context)
 
 
 def playerImpact(request, player_id):
-    stockImpact = Stock_Creativity.objects.get(player_id=player_id)
+    player = Player.objects.get(id=player_id)
+    stockImpact = Stock_Impact.objects.get(player_id=player_id)
     context = {
         "stock": stockImpact,
-        "type": "Impact"
+        "type": "impact",
+        "player": player,
     }
     return render(request, 'templates/stockView.html', context)
+
 
 
 def userStockView(request):
@@ -117,6 +125,53 @@ def userStockView(request):
                'username': username}
 
     return render(request, 'templates/userPlayers.html', context)
+
+def buyCreativity(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # post stock into user's stocks
+
+    return HttpResponse("You just bought " + player.first_name +
+                        " " + player.last_name + "'s Creativity ")
+
+
+def buyImpact(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # post stock into user's stocks
+
+    return HttpResponse("You just bought " + player.first_name +
+                        " " + player.last_name + "'s Impact ")
+
+
+def buyInfluence(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # post stock into user's stocks
+
+    return HttpResponse("You just bought " + player.first_name +
+                        " " + player.last_name + "'s Influence ")
+
+
+def sellCreativity(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # remove stock from user's stocks
+
+    return HttpResponse("You just sold " + player.first_name +
+                        " " + player.last_name + "'s Creativity ")
+
+
+def sellImpact(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # remove stock user's stocks
+
+    return HttpResponse("You just sold " + player.first_name +
+                        " " + player.last_name + "'s Impact ")
+
+
+def sellInfluence(request, player_id):
+    player = Player.objects.get(id=player_id)
+    # remove stock user's stocks
+
+    return HttpResponse("You just sold " + player.first_name +
+                        " " + player.last_name + "'s Influence ")
 
 
 def dashboard(request):
