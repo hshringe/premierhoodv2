@@ -24,9 +24,8 @@ def register_request(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             email = form.cleaned_data.get('email')
-            print(username)
-            print(password)
-            print(email)
+            ourUser = User(username=username, password=password, email=email)
+            ourUser.save()
             # THIS IS WHERE IT SHOULD PUSH TO A DATABASE
             login(request, user)
             messages.success(request, "Registration successful.")
@@ -114,13 +113,12 @@ def userStockView(request):
     username = None
     if request.user.is_authenticated:
         username = request.user.username
-    print(username)
     players = Player.objects.raw('''SELECT *
                                 FROM premierhoodv2_player tbl1 
-                                NATURAL JOIN 
+                                JOIN 
                                 (SELECT stock_id 
                                 FROM premierhoodv2_userstocksowned 
-                                WHERE username_id = %s) tbl2''', [username])
+                                WHERE username_id = %s) tbl2 ON tbl1.id = tbl2.stock_id''', [username])
     context = {'players': players,
                'username': username}
 
@@ -129,50 +127,98 @@ def userStockView(request):
 def buyCreativity(request, player_id):
     player = Player.objects.get(id=player_id)
     # post stock into user's stocks
-
-    return HttpResponse("You just bought " + player.first_name +
-                        " " + player.last_name + "'s Creativity ")
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
+    return buyStock(curr_username, player)
 
 
 def buyImpact(request, player_id):
     player = Player.objects.get(id=player_id)
     # post stock into user's stocks
-
-    return HttpResponse("You just bought " + player.first_name +
-                        " " + player.last_name + "'s Impact ")
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
+    return buyStock(curr_username, player)
 
 
 def buyInfluence(request, player_id):
     player = Player.objects.get(id=player_id)
     # post stock into user's stocks
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
 
-    return HttpResponse("You just bought " + player.first_name +
-                        " " + player.last_name + "'s Influence ")
-
+    return buyStock(curr_username, player)
 
 def sellCreativity(request, player_id):
     player = Player.objects.get(id=player_id)
     # remove stock from user's stocks
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
 
-    return HttpResponse("You just sold " + player.first_name +
-                        " " + player.last_name + "'s Creativity ")
+    return sellStock(curr_username, player)
 
 
 def sellImpact(request, player_id):
     player = Player.objects.get(id=player_id)
     # remove stock user's stocks
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
 
-    return HttpResponse("You just sold " + player.first_name +
-                        " " + player.last_name + "'s Impact ")
+    return sellStock(curr_username, player)
 
 
 def sellInfluence(request, player_id):
     player = Player.objects.get(id=player_id)
     # remove stock user's stocks
+    curr_username = None
+    if request.user.is_authenticated:
+        curr_username = request.user.username
 
-    return HttpResponse("You just sold " + player.first_name +
-                        " " + player.last_name + "'s Influence ")
+    return sellStock(curr_username, player)
 
 
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
+
+def buyStock(curr_username, player):
+    try:
+        user = User.objects.get(username=curr_username)
+    except User.DoesNotExist:
+        user = None
+
+    try:
+        stock_exists = UserStocksOwned.objects.get(username=user, stock=player)
+    except UserStocksOwned.DoesNotExist:
+        stock_exists = None
+
+    if stock_exists is None:
+        new_stock = UserStocksOwned(username=user, stock=player)
+        new_stock.save()
+        return HttpResponse("You just bought " + player.first_name +
+                        " " + player.last_name)
+    else:
+        return HttpResponse("You already own " + player.first_name +
+                        " " + player.last_name)
+
+def sellStock(curr_username, player):
+    try:
+        user = User.objects.get(username=curr_username)
+    except User.DoesNotExist:
+        user = None
+
+    try:
+        stock_exists = UserStocksOwned.objects.get(username=user, stock=player)
+    except UserStocksOwned.DoesNotExist:
+        stock_exists = None
+
+    if stock_exists is not None:
+        stock_exists.delete()
+        return HttpResponse("You just sold " + player.first_name +
+                        " " + player.last_name)
+    else:
+        return HttpResponse("You do not own " + player.first_name +
+                        " " + player.last_name)
