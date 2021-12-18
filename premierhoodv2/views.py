@@ -198,6 +198,12 @@ def buyStock(curr_username, player):
     if stock_exists is None:
         new_stock = UserStocksOwned(username=user, stock=player)
         new_stock.save()
+        c = connection.cursor()
+        try:
+            c.callproc("buy_stock_4", [player.id,])
+        finally:
+            c.close()
+
         return HttpResponse("You just bought " + player.first_name +
                         " " + player.last_name)
     else:
@@ -217,6 +223,12 @@ def sellStock(curr_username, player):
 
     if stock_exists is not None:
         stock_exists.delete()
+        c = connection.cursor()
+        try:
+            c.callproc("sell_stock", [player.id,])
+        finally:
+            c.close()
+
         return HttpResponse("You just sold " + player.first_name +
                         " " + player.last_name)
     else:

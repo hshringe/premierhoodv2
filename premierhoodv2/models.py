@@ -12,7 +12,7 @@ class Player(models.Model):
     id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
-    buyCount = models.IntegerField(default=0)
+    buy_count = models.IntegerField(default=0)
 
 class UserStocksOwned(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)

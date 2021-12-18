@@ -1,6 +1,6 @@
 from django.db import migrations
 
-SQL = """CREATE PROCEDURE add_count(player_id int) 
+SQL = """CREATE PROCEDURE buy_stock(player_id int) 
     AS $$
     BEGIN
 	    UPDATE premierhoodv2_player 
@@ -13,7 +13,7 @@ SQL = """CREATE PROCEDURE add_count(player_id int)
     """
 class Migration(migrations.Migration):
     dependencies = [
-        ('premierhoodv2', '0002_auto_20211217_2223'),
+        ('premierhoodv2', 'storedProc'),
     ]
 
     operations = [migrations.RunSQL(SQL)]
